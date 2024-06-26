@@ -54,19 +54,22 @@ def detect_main_target(frame, device, min_accuracy, kp_model, kp_transforms):
     bboxes = []
     
     for selector, box in enumerate(main_boxes):
-        bbox = [
-            box[0][0].item(), 
-            box[0][1].item(),
-            box[0][2].item(),
-            box[0][3].item()
-        ]
-        
-        distance, area = measure.distance_from_vertical_line(frame, bbox) 
-        
-        focuses.append(area/distance)
-        distances.append(distance)
-        areas.append(area)
-        bboxes.append(bbox)
+        try:
+            bbox = [
+                box[0][0].item(),
+                box[0][1].item(),
+                box[0][2].item(),
+                box[0][3].item()
+            ]
+
+            distance, area = measure.distance_from_vertical_line(frame, bbox)
+
+            focuses.append(area/distance)
+            distances.append(distance)
+            areas.append(area)
+            bboxes.append(bbox)
+        except:
+            continue
 
     # print("Distances: ",distances)
     # print("Areas: ", areas)
