@@ -46,7 +46,7 @@ def detect_main_target(frame, device, min_accuracy, kp_model, kp_transforms):
     min_area = 0
     max_distance = frame.width/2
 
-    print("Found ", len(main_boxes), " person in the frame")
+    # print("Found ", len(main_boxes), " person in the frame")
 
     distances = []
     areas = []
